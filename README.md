@@ -14,6 +14,7 @@ git clone https://github.com/ChrisHobday/gcadapter-oc-kmod-rpm
 ```
 or
 Download ZIP with the green button
+
 3) Run spectool on the spec file from within the rpmbuild directory (This will download the source code defined in the .spec file)
 ```console
 spectool --define "_topdir `pwd`" -g -R SPECS/gcadapter-oc-kmod.spec
