@@ -8,7 +8,7 @@ The source code can be found here https://github.com/hannesmann/gcadapter-oc-kmo
 ```console
 dnf install gcc rpm-build rpm-devel rpmlint make python bash coreutils diffutils patch rpmdevtools
 ```
-2) Git clone the github or download the rpm directory, preferably to you home directory as rpmbuild operates out of there by default
+2) Git clone the github or download the rpm directory, preferably to your home directory as rpmbuild operates out of there by default
 ```console
 git clone https://github.com/ChrisHobday/gcadapter-oc-kmod-rpm
 ```
