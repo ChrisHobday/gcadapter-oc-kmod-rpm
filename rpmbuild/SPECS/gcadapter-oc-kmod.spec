@@ -1,7 +1,7 @@
 # (un)define the next line to either build for the newest or all current kernels
-#define buildforkernels newest
-%define buildforkernels current
-#define buildforkernels akmod
+# %define buildforkernels newest
+# %define buildforkernels current
+%define buildforkernels akmod
 
 %global debug_package %{nil}
 
@@ -41,7 +41,7 @@ echo "PREP--------------------------------------------------"
 %{?kmodtool_check}
 
 # print kmodtool output for debugging purposes:
-# kmodtool  --target %{_target_cpu}  --repo %{repo} --kmodname %{name} %{?buildforkernels:--%{buildforkernels}} %{?kernels:--for-kernels "%{?kernels}"} 2>/dev/null
+kmodtool  --target %{_target_cpu}  --repo %{repo} --kmodname %{name} %{?buildforkernels:--%{buildforkernels}} %{?kernels:--for-kernels "%{?kernels}"} 2>/dev/null
 echo "------------------------------------------------------"
 
 %setup -q -c
