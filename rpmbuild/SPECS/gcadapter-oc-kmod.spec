@@ -3,27 +3,26 @@
 # %define buildforkernels current
 %define buildforkernels akmod
 
+# Turn off debug package
 %global debug_package %{nil}
 
-%define github_user  hannesmann
-%define kmod_name    gcadapter-oc-kmod
 %define commit       6e3381d07d01714bd6bd2198be83f45230e2f3d0
 %define short_commit %(c=%{commit}; echo ${c:0:7})
 
 %define repo         rpmfusion
 
 # name should have a -kmod suffix
-Name:           %{kmod_name}
+Name:           gcadapter-oc-kmod
 Version:        1.4
 Release:        1%{?dist}
 Summary:        Kernel module(s)
 Group:          System Environment/Kernel
 License:        GPLv2
 URL:            https://github.com/hannesmann/gcadapter-oc-kmod
-Source0:        %{URL}/archive/%{commit}/%{kmod_name}-%{short_commit}.tar.gz
+Source0:        %{URL}/archive/%{commit}/%{name}-%{short_commit}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-# TODO: Add more requires
+# Packages require to build
 BuildRequires: kmodtool
 BuildRequires: gcc
 BuildRequires: make
