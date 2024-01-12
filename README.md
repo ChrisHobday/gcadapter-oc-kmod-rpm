@@ -37,14 +37,13 @@ sudo modprobe gcadapter_oc
 ```console
 dnf install gcc rpm-build rpm-devel rpmlint make python bash coreutils diffutils patch rpmdevtools
 ```
-2) Git clone this github or download it as a zip and extract it, preferably to your home directory as rpmbuild operates out of there by default
+2) Git clone this github
 ```console
 git clone https://github.com/ChrisHobday/gcadapter-oc-kmod-rpm
 ```
-or
-Download ZIP with the green button and extract it
+or Download ZIP with the green button and extract it
 
-3) Run spectool on the spec file from within the rpmbuild directory (This will download the source code defined in the .spec file)
+3) Run spectool on the spec file from within the rpmbuild directory (This will download the source code defined in the .spec file to the SOURCES directory)
 ```console
 spectool --define "_topdir `pwd`" -g -R SPECS/gcadapter-oc-kmod.spec
 ```
