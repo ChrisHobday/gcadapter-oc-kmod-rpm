@@ -8,18 +8,18 @@ The source code can be found here https://github.com/hannesmann/gcadapter-oc-kmo
 ```console
 dnf install gcc rpm-build rpm-devel rpmlint make python bash coreutils diffutils patch rpmdevtools
 ```
-2) Git clone the github or download the rpm directory, preferably to your home directory as rpmbuild operates out of there by default
+2) Git clone this github or download it as a zip and extract it, preferably to your home directory as rpmbuild operates out of there by default
 ```console
 git clone https://github.com/ChrisHobday/gcadapter-oc-kmod-rpm
 ```
 or
-Download ZIP with the green button
+Download ZIP with the green button and extract it
 
-3) Run spectool on the spec file from within the rpmbuild directory (This will download the source code defined in the .spec file)
+4) Run spectool on the spec file from within the rpmbuild directory (This will download the source code defined in the .spec file)
 ```console
 spectool --define "_topdir `pwd`" -g -R SPECS/gcadapter-oc-kmod.spec
 ```
-4) Run rpmbuild on the spec file from within the rpmbuild directory (This will build the RPMs/SRPMs, which you can find in their respective directories)
+5) Run rpmbuild on the spec file from within the rpmbuild directory (This will build the RPMs/SRPMs, which you can find in their respective directories)
 ```console
 rpmbuild --define "_topdir `pwd`" -ba SPECS/gcadapter-oc-kmod.spec
 ```
