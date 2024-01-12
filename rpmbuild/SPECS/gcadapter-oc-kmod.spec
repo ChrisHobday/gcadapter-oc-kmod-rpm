@@ -22,6 +22,9 @@ URL:            https://github.com/hannesmann/gcadapter-oc-kmod
 Source0:        %{URL}/archive/%{commit}/%{name}-%{short_commit}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
+# Packages this RPM provides
+Provides: gcadapter-oc-kmod-common
+
 # Packages require to build
 BuildRequires: kmodtool
 BuildRequires: gcc
