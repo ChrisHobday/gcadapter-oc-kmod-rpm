@@ -11,6 +11,7 @@ git clone https://github.com/ChrisHobday/gcadapter-oc-kmod-rpm
 or Download ZIP with the green button and extract it
 
 2) Install the akmod-gcadapter-oc and gcadapter-oc-kmod RPMs located in the rpmbuild/RPMs/x86_64/ directory together (make sure to run this command from within that directory)
+
 If on an immutable distro like Fedora Kinoite/Silverblue
 ```console
 rpm-ostree install akmod-gcadapter-oc-1.4-1.fc39.x86_64.rpm gcadapter-oc-kmod-1.4-1.fc39.x86_64.rpm
