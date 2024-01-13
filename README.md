@@ -3,7 +3,7 @@ A rpmbuild directory which contains the built RPMs/SRPMs, and the .spec file and
 
 The source code can be found here https://github.com/hannesmann/gcadapter-oc-kmod.
 
-These RPM packages provide the gcadapter_oc kernel module that overclocks GameCube USB adapters. They do this by installing the compressed kernel module in /lib/modules/YOUR_LINUX_KERNEL/extra/ and a .conf file /etc/modules-load.d/ (so that the kernel module is automatically loaded at boot). They are also in the form of an akmod, so that they will automatically recompile when the kernel is updated.
+These RPM packages provide the gcadapter_oc kernel module that overclocks GameCube USB adapters. They do this by installing the compressed kernel module in /lib/modules/YOUR_LINUX_KERNEL/extra/ and a .conf file in /etc/modules-load.d/ (so that the kernel module is automatically loaded at boot). They are also in the form of an akmod, so that they will automatically recompile when the kernel is updated.
 
 ## Steps for installing the RPMs
 1) Git clone this github
@@ -13,6 +13,7 @@ git clone https://github.com/ChrisHobday/gcadapter-oc-kmod-rpm
 or Download ZIP with the green button and extract it
 
 2) Install the akmod-gcadapter-oc and gcadapter-oc-kmod RPMs located in the rpmbuild/RPMs/x86_64/ directory together (make sure to run this command from within that directory)
+
 If on an immutable distro like Fedora Kinoite/Silverblue
 ```console
 rpm-ostree install akmod-gcadapter-oc-1.4-1.fc39.x86_64.rpm gcadapter-oc-kmod-1.4-1.fc39.x86_64.rpm
