@@ -66,6 +66,13 @@ echo "------------------------------------------------------"
 
 %install
 echo "INSTALL-----------------------------------------------"
+
+echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+echo "buildroot"
+echo %{buildroot}
+echo "_sysconfdir"
+echo  %{_sysconfdir}
+
 # For each kernel version we are targeting
 for kernel_version in %{?kernel_versions}; do
   # Make the directory the kernel module will be installed into in the BUILDROOT folder
@@ -75,7 +82,7 @@ for kernel_version in %{?kernel_versions}; do
   # Make the installed kernel module executable for all users 
   chmod a+x %{buildroot}%{kmodinstdir_prefix}/${kernel_version%%___*}/%{kmodinstdir_postfix}/*.ko
   # Add .conf file to /etc/modules-load.d/ so that the module is autoloaded on boot
-  echo "gcadapter_oc" | tee %{buildroot}%{_sysconfdir}/modules-load.d/gcadapter_oc.conf
+  echo "gcadapter_oc" %{buildroot}/etc/modules-load.d/gcadapter_oc.conf
 done
 # AKMOD magic I guess?
 %{?akmod_install}
