@@ -95,4 +95,3 @@ echo "------------------------------------------------------"
 
 %files
 /etc/modules-load.d/gcadapter_oc.conf
-# /lib/modules/* 
