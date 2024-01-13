@@ -75,7 +75,7 @@ for kernel_version in %{?kernel_versions}; do
   # Make the installed kernel module executable for all users 
   chmod a+x %{buildroot}%{kmodinstdir_prefix}/${kernel_version%%___*}/%{kmodinstdir_postfix}/*.ko
   # Add .conf file to /etc/modules-load.d/ so that the module is autoloaded on boot
-  echo "gcadapter_oc" | sudo tee %{buildroot}%{_sysconfdir}/modules-load.d/gcadapter_oc.conf
+  echo "gcadapter_oc" | tee %{buildroot}%{_sysconfdir}/modules-load.d/gcadapter_oc.conf
 done
 # AKMOD magic I guess?
 %{?akmod_install}
