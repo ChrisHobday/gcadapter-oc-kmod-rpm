@@ -62,28 +62,27 @@ for kernel_version in %{?kernel_versions}; do
   # Make/Build the kernel module (by running make in the directories previous copied) (This makes the .ko files in each of those respective directories)
   %{__make} %{?_smp_mflags} -C "${kernel_version##*___}" M=${PWD}/_kmod_build_${kernel_version%%___*} modules
 done
+# Create gcadapter_oc.conf file needed for autoloading module at boot (will be installed into /etc/modules-load.d/ in install step)
+cat > gcadapter_oc.conf <<EOF
+gcadapter_oc
+EOF
 echo "------------------------------------------------------"
 
 %install
 echo "INSTALL-----------------------------------------------"
-
-echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
-echo "buildroot"
-echo %{buildroot}
-echo "_sysconfdir"
-echo  %{_sysconfdir}
-
 # For each kernel version we are targeting
 for kernel_version in %{?kernel_versions}; do
   # Make the directory the kernel module will be installed into in the BUILDROOT folder
   mkdir -p %{buildroot}%{kmodinstdir_prefix}/${kernel_version%%___*}/%{kmodinstdir_postfix}/
-  # "Install" the previously created kernel module (This moves and compresses the .ko file to the directory created above)
+  # Install the previously built kernel module (This moves and compresses the .ko file to the directory created above)
   install -D -m 755 _kmod_build_${kernel_version%%___*}/gcadapter_oc.ko %{buildroot}%{kmodinstdir_prefix}/${kernel_version%%___*}/%{kmodinstdir_postfix}/
   # Make the installed kernel module executable for all users 
   chmod a+x %{buildroot}%{kmodinstdir_prefix}/${kernel_version%%___*}/%{kmodinstdir_postfix}/*.ko
-  # Add .conf file to /etc/modules-load.d/ so that the module is autoloaded on boot
-  echo "gcadapter_oc" %{buildroot}/etc/modules-load.d/gcadapter_oc.conf
 done
+# Make the directory the .conf file will be installed into in the BUILDROOT folder
+mkdir -p %{buildroot}/etc/modules-load.d/
+# Install the previously built .conf file
+install -m 755 gcadapter_oc.conf %{buildroot}/etc/modules-load.d/gcadapter_oc.conf
 # AKMOD magic I guess?
 %{?akmod_install}
 echo "------------------------------------------------------"
@@ -95,4 +94,5 @@ echo "CLEAN-------------------------------------------------"
 echo "------------------------------------------------------"
 
 %files
+/etc/modules-load.d/gcadapter_oc.conf
 # /lib/modules/* 
